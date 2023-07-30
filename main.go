@@ -9,10 +9,11 @@ import (
 )
 
 func problemPuller(fileName string) ([]problem, error) {
+
 	// read all the problem form the quix.csv
 	//1. Open the file
 	if fObj, err := os.Open(fileName); err == nil {
-		//2. we will create a new reader
+		//2. create a new reader
 		csvR := csv.NewReader(fObj)
 		//3. it will read all the lines
 		if cLines, err := csvR.ReadAll(); err == nil {
@@ -28,6 +29,8 @@ func problemPuller(fileName string) ([]problem, error) {
 }
 
 func main() {
+
+	fmt.Println("------WELCOME TO THE QUIZ GAME------")
 	// 1. Input the name of the file
 	fName := flag.String("f", "quiz.csv", "Path of csv file")
 	// 2. Set the duration of the time
@@ -69,7 +72,7 @@ problemLoop:
 			}
 		}
 	}
-	// 8. we'll calculate and print out the result
+	// 8. Calculate and print out the result
 	fmt.Printf("Your result is %d out of %d\n", correctAns, len(problems))
 	fmt.Printf("Press enter to exit")
 	<-ansC
